@@ -3,15 +3,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import React from 'react';
 import LoginScreen from './src/screens/LoginScreen';
-import UnderBarButton from './src/component/UnderBarButton';
 import HomeScreen from './src/screens/HomeScreen';
 import MapScreen from './src/screens/MapScreen';
 import AddScreen from './src/screens/AddScreen';
 import MapScreen2 from './src/screens/MapScreen2';
 import PartyDetailScreen from './src/screens/PartyDetailScreen';
 import WishlistScreen from './src/screens/WishlistScreen';
-import ChatRoomScreen from './src/component/ChatRoomScreen';
-import ChatScreen from './src/component/ChatScreen';
+import ChatRoomScreen from './src/screens/ChatRoomScreen';
+import ChatScreen from './src/screens/ChatScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 // import { ChatProvider } from "./src/screens/ChatContext";
