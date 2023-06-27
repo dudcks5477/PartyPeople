@@ -5,7 +5,7 @@ import InputFields from '../component/InputFields';
 import PartyDescription from '../component/PartyDescription';
 import PhotoUpload from '../component/PhotoUpload';
 import Button from '../component/Button';
-import {styles} from './Styles/AddStyles';
+import {styles} from '../styles/AddStyles';
 
 const AddParty = () => {
   const [partyName, setPartyName] = React.useState('');
