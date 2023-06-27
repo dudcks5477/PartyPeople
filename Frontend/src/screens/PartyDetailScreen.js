@@ -6,13 +6,13 @@ import {
   View,
   ScrollView,
   Button,
+  AsyncStorage,
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
 import Line from '../components/Line';
 import {TouchableHighlight} from 'react-native-gesture-handler';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {styles} from '../styles/PartyDetailStyles';
 const PartyDetailScreen = ({route}) => {
   const [isFavorite, setIsFavorite] = useState(false);

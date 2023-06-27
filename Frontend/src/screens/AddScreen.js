@@ -13,7 +13,7 @@ import {
 import ImageCropPicker from 'react-native-image-crop-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {AsyncStorage} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {styles} from '../styles/AddStyles';
 const AddScreen = ({navigation, route}) => {
@@ -44,20 +44,20 @@ const AddScreen = ({navigation, route}) => {
     setSelectedImageIndex(-1);
     setModalVisible(false);
   };
-  const handleCameraPress = () => {
-    ImageCropPicker.openPicker({
-      multiple: true,
-      mediaType: 'photo',
-    })
-      .then(selectedImages => {
-        if (selectedImages.length > 0) {
-          handleImagesSelected(selectedImages);
-        }
-      })
-      .catch(error => {
-        console.log('ImagePicker Error: ', error);
-      });
-  };
+  // const handleCameraPress = () => {
+  //   ImageCropPicker.openPicker({
+  //     multiple: true,
+  //     mediaType: 'photo',
+  //   })
+  //     .then(selectedImages => {
+  //       if (selectedImages.length > 0) {
+  //         handleImagesSelected(selectedImages);
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.log('ImagePicker Error: ', error);
+  //     });
+  // };
   const handleCreate = async () => {
     if (
       !address ||
@@ -290,7 +290,8 @@ const AddScreen = ({navigation, route}) => {
           <View style={styles.photoUpload}>
             <TouchableOpacity
               style={styles.photoCameraButton}
-              onPress={handleCameraPress}>
+              // onPress={handleCameraPress}
+            >
               <View
                 style={{
                   backgroundColor: 'black',

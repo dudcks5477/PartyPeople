@@ -5,10 +5,10 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  AsyncStorage,
 } from 'react-native';
 import axios from 'axios';
 import {useNavigation} from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Card from '../components/Card';
 
 const WishlistScreen = () => {

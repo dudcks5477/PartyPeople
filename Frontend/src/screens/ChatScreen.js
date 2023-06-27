@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
-import Line from '../container/Line';
+import Line from '../components/Line';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {AsyncStorage} from 'react-native';
 

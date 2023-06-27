@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, Text} from 'react-native';
-import {styles} from '../screens/Styels/CardStyles';
+import {styles} from '../styles/CardStyles';
 
 const Card = ({partyData}) => {
   const {

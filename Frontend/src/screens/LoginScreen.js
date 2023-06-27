@@ -1,7 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {View, TextInput, TouchableOpacity, Text, Keyboard} from 'react-native';
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  Text,
+  Keyboard,
+  AsyncStorage,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // AsyncStorage 추가
 
 import {styles} from '../styles/LoginStyles';
 import {
