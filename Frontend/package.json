@@ -24,6 +24,7 @@
     "react-native-google-places-autocomplete": "^2.5.1",
     "react-native-image-crop-picker": "^0.40.0",
     "react-native-maps": "^1.7.1",
+    "react-native-ratings": "^8.1.0",
     "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
