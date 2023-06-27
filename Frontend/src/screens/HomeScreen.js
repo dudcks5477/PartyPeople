@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
-import SearchBar from '../container/SearchBar';
-import Line from '../container/Line';
+import SearchBar from '../components/SearchBar';
+import Line from '../components/Line';
 import Card from '../components/Card';
 
 const HomeScreen = () => {
