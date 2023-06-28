@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Config from 'react-native-config';
-import { ScrollView } from 'react-native-gesture-handler';
 
-const Card = ({partyData}) => {
-  const [partyDataState, setPartyDataState] = useState({
+const Card = () => {
+  const [partyDataState] = useState({
     address: '',
     date: '',
     time: '',
