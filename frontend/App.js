@@ -4,6 +4,7 @@ import React from 'react';
 import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import UnderBarButton from './src/navigation/UnderBarButton';
+import MapScreen from './src/screens/MapScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,7 +28,13 @@ const App = () => (
       <Stack.Screen
         name="BottomTab"
         component={UnderBarButton}
-        options={{ headerShown: false }}
+        options={{ 
+          headerShown: false 
+        }}
+      />
+      <Stack.Screen
+        name="MapScreen"
+        component={MapScreen}
       />
     </Stack.Navigator>
   </NavigationContainer>
