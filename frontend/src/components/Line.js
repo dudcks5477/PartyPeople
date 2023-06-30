@@ -2,7 +2,6 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import propTypes from 'prop-types';
 
-
 const Line = ({style}) => {
   return <View style={[styles.line, style]} />;
 };
