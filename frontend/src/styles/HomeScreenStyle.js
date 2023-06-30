@@ -8,4 +8,7 @@ export const styles = StyleSheet.create({
   containerNotch: {
     flex: 1,
   },
+  cardButton: {
+    marginBottom: 10,
+  }
 });
