@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, Keyboard, TextInput, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import axios from 'axios';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import {styles} from '../styles/LoginScreenStyle';
 
 export default function LoginScreen() {
@@ -34,16 +34,16 @@ export default function LoginScreen() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://3.35.21.149:8080/users/login', {
-        email: email,
-        password: password,
-      });
+      // const response = await axios.post('http://3.35.21.149:8080/users/login', {
+      //   email: email,
+      //   password: password,
+      // });
 
-      const userId = response.data.id;
+      // const userId = response.data.id;
 
-      await AsyncStorage.setItem('useId', JSON.stringify(userId));
+      // await AsyncStorage.setItem('useId', JSON.stringify(userId));
 
-      console.log('a', userId);
+      // console.log('a', userId);
 
       navigation.navigate('BottomTab', {screen: 'Home'});
     } catch(error) {
@@ -88,4 +88,3 @@ export default function LoginScreen() {
     </View>
   );
 }
-
