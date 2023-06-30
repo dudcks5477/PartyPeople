@@ -2,6 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import HomeScreen from '../screens/HomeScreen';
+import MapScreen from '../screens/MapScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -30,14 +31,14 @@ const UnderBarButton = () => {
         tabBarInactiveTintColor: 'white',
         tabBarStyle: { backgroundColor: 'black' }
       })}>
-      {/* <Tab.Screen 
-      name="Map" 
-      component={MapScreen}
-      options={{
-        headerShown: false,
-      }}
-    />
-    <Tab.Screen
+      <Tab.Screen 
+        name="Map" 
+        component={MapScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      {/* <Tab.Screen
       name="Wishilist"
       component={WishilistScreen}
       options={{
