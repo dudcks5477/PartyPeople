@@ -3,7 +3,7 @@ import {View, Text, Keyboard, TextInput, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 // import axios from 'axios';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
-import {styles} from '../styles/LoginScreenStyle';
+import {styles} from '../styles/LoginStyle';
 
 export default function LoginScreen() {
   const [keyboardStatus, setKeyboardStatus] = useState(false);

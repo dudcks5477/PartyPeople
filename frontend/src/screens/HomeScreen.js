@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import SearchBar from '../components/SearchBar';
 import Line from '../components/Line';
 import Card from '../components/Card';
-import {styles} from '../styles/HomeScreenStyle';
+import {styles} from '../styles/HomeStyle';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
