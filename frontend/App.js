@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator();
 const App = () => (
   <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen 
+      {/* <Stack.Screen 
         name="Login" 
         component={LoginScreen} 
         options={{
@@ -36,7 +36,7 @@ const App = () => (
       <Stack.Screen
         name="Map"
         component={MapScreen}
-      />
+      /> */}
       <Stack.Screen
         name="Wishilist"
         component={WishlistScreen}
