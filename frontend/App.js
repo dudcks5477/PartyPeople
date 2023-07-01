@@ -5,6 +5,7 @@ import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import UnderBarButton from './src/navigation/UnderBarButton';
 import MapScreen from './src/screens/MapScreen';
+import WishlistScreen from './src/screens/WishlistScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,8 +34,15 @@ const App = () => (
         }}
       />
       <Stack.Screen
-        name="MapScreen"
+        name="Map"
         component={MapScreen}
+      />
+      <Stack.Screen
+        name="Wishilist"
+        component={WishlistScreen}
+        options={{
+          headerShown: false
+        }}
       />
     </Stack.Navigator>
   </NavigationContainer>
