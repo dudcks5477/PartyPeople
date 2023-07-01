@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import HomeScreen from '../screens/HomeScreen';
 import MapScreen from '../screens/MapScreen';
+import WishlistScreen from '../screens/WishlistScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -38,13 +39,13 @@ const UnderBarButton = () => {
           headerShown: false,
         }}
       />
-      {/* <Tab.Screen
-      name="Wishilist"
-      component={WishilistScreen}
-      options={{
-        headerShown: false,
-      }}
-    /> */}
+      <Tab.Screen
+        name="Wishilist"
+        component={WishlistScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Tab.Screen
         name="Home"
         component={HomeScreen}
