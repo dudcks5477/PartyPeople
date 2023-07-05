@@ -4,6 +4,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import HomeScreen from '../screens/HomeScreen';
 import MapScreen from '../screens/MapScreen';
 import WishlistScreen from '../screens/WishlistScreen';
+import ChatScreen from '../screens/ChatScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,7 +33,7 @@ const UnderBarButton = () => {
         tabBarInactiveTintColor: 'white',
         tabBarStyle: { backgroundColor: 'black' }
       })}>
-      <Tab.Screen 
+      {/* <Tab.Screen 
         name="Map" 
         component={MapScreen}
         options={{
@@ -52,15 +53,15 @@ const UnderBarButton = () => {
         options={{
           headerShown: false,
         }}
+      /> */}
+      <Tab.Screen
+        name="Chat"
+        component={ChatScreen}
+        options={{
+          headerShown: false,
+        }}
       />
       {/* <Tab.Screen
-      name="Chat"
-      component={ChatScreen}
-      options={{
-        headerShown: false,
-      }}
-    />
-    <Tab.Screen
       name="PrivateProfile"
       component={PrivateProfile}
       options={{
