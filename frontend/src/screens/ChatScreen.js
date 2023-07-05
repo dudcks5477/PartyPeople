@@ -1,22 +1,59 @@
-import React, {useState} from 'react';
-import {View, TouchableOpacity, Text, FlatList} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, TouchableOpacity, Text, FlatList } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import PropTypes from 'prop-types';
 
-import {styles} from '../styles/ChatStyle';
+import { styles } from '../styles/ChatStyle';
 import Line from '../components/Line';
 
 const ChatScreen = ({ navigation }) => {
-
-  const [userId, setuserId] = useState();
+  const [userId, setUserId] = useState();
   const [selectedTab, setSelectedTab] = useState('message');
-  const [messageCount, setMessageCount] = useState(0);
-  const [notificationCount, setNotificationCount] = useState(0);
+  const [messageCount] = useState(0);
+  const [notificationCount] = useState(0);
   const [chatRooms, setChatRooms] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchChatRooms = async () => {
+    try {
+      const storedUserId = JSON.parse(await AsyncStorage.getItem('userId'));
+      setUserId(storedUserId);
+      const response = await fetch('http://ec2-13-209-74-82.ap-northeast-2.compute.amazonaws.com:8080/api/chatRooms', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      } else {
+        console.error('Failed to fetch chat rooms');
+        return [];
+      }
+    } catch (error) {
+      console.error('Error fetching chat rooms:', error);
+      return [];
+    }
+  };
+
+  const fetchData = async () => {
+    try {
+      const chatRoomsData = await fetchChatRooms();
+      setChatRooms(chatRoomsData);
+    } catch (error) {
+      console.log('Error fetching data', error);
+    }
+  };
 
   function renderItem({ item }) {
     return (
       <TouchableOpacity
-        onPress={() => 
+        onPress={() =>
           navigation.navigate('ChatRoomScreen', {
             chatRoomId: item.chatRoomId,
             partyName: item.partyName,
@@ -24,13 +61,13 @@ const ChatScreen = ({ navigation }) => {
           })
         }
       >
-        <View style={{flexDirection: 'row', marginTop: 10, alignItems: 'center'}}>
+        <View style={styles.chatContainer}>
           <MaterialIcons name="account-circle" size={60} color="gray" 
-            style={{marginRight: 2}} />
-          <View style={{ flexDirection: 'column'}}>
-            <Text style={{ fontSize: 14 }}>{item.partyName}</Text>
-            <Text style={{ fontSize: 12 }}>{item.hostId === 'myHostId' ? '주최자' : '참석자'}</Text>
-            <Text style={{ fontSize: 10 }}>{`${item.attendeesCount}명 참석자`}</Text>
+            style={{ marginRight: 2 }} />
+          <View style={{ flexDirection: 'column' }}>
+            <Text style={styles.text}>{item.partyName}</Text>
+            <Text style={styles.subText}>{item.hostId === 'myHostId' ? '주최자' : '참석자'}</Text>
+            <Text style={styles.smallText}>{`${item.attendeesCount}명 참석자`}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -38,13 +75,13 @@ const ChatScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={{flex: 1, backgroundColor: '#222'}}>
+    <View style={styles.container}>
       <Text>채팅</Text>
-      <View style={{ marginTop: 20, width: '90%', marginHorizontal: '5%' }}>
-        <View style={{ flexDirection: 'row', marginBottom: 13 }}>
+      <View style={styles.title}>
+        <View style={styles.tabWrapper}>
           <TouchableOpacity onPress={() => setSelectedTab('message')}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <Text style={[styles.text, {marginRight: 35}]}>Message</Text>
+            <View style={styles.tabButton}>
+              <Text style={[styles.text, styles.tabButtonText]}>Message</Text>
               {messageCount > 0 && (
                 <View style={styles.notificationBadge}>
                   <Text style={styles.badgeText}>{messageCount}</Text>
@@ -53,28 +90,25 @@ const ChatScreen = ({ navigation }) => {
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setSelectedTab('notification')}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={styles.tabButton}>
               <Text style={styles.text}>
                 {notificationCount > 0 && (
                   <View style={styles.notificationBadge}>
-                    <Text style={styles.badgeText}>
-                      {notificationCount}
-                    </Text>
+                    <Text style={styles.badgeText}>{notificationCount}</Text>
                   </View>
                 )}
               </Text>
             </View>
           </TouchableOpacity>
-        </View> 
-        {selectedTab === 'message' && <Line style={{ width: 60, marginLeft: '0%', backgroundColor: 'black'}}/>} 
+        </View>
+        {selectedTab === 'message' && <Line style={styles.lineStyleMessage} />}
         {selectedTab === 'notification' && (
-          <Line style={{width: 75, marginLeft: '26%', backgroundColor: 'black'}} />
+          <Line style={styles.lineStyleNotification} />
         )}
       </View>
-      <Line style= {{ marginBottom: 10 }} />
-      <View style={{ flex: 1 }}>
+      <Line style={styles.lineStyle} />
+      <View style={styles.flatListStyle}>
         <FlatList
-          style={{ width: '90%' , marginHorizontal: '5%' }}
           data={chatRooms}
           keyExtractor={(item) => item.chatRoomId}
           renderItem={renderItem}
@@ -82,6 +116,10 @@ const ChatScreen = ({ navigation }) => {
       </View>
     </View>
   );
+};
+
+ChatScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
 };
 
 export default ChatScreen;
