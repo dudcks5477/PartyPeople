@@ -1,12 +1,21 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#222',
+  },
   title: {
     color: 'white',
     fontSize: 40,
     fontWeight: 'bold',
     marginLeft: 15,
     marginTop: 30,
+  },
+  errorMessage: {
+    color: 'red',
+    textAlign: 'center',
+    marginVertical: 10,
   },
   cardContainer: {
     alignItems: 'center', 
