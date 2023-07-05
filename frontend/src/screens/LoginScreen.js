@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, Keyboard, TextInput, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-// import axios from 'axios';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
 import {styles} from '../styles/LoginStyle';
 
 export default function LoginScreen() {
@@ -11,8 +9,8 @@ export default function LoginScreen() {
   const [password, setPassword] = useState('');
 
   useEffect(() => {
-    const keyboardDidshowListener = Keyboard.addListener(
-      'keyboardDidshow',
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
       () => {
         setKeyboardStatus(true);
       }
@@ -25,7 +23,7 @@ export default function LoginScreen() {
     );
 
     return () => {
-      keyboardDidshowListener.remove();
+      keyboardDidShowListener.remove();
       keyboardDidHideListener.remove();
     };
   }, []);
@@ -66,7 +64,7 @@ export default function LoginScreen() {
           style={styles.input}
           placeholder='이메일'
           value={email}
-          onChange={setEmail}
+          onChangeText={setEmail}
           autoCapitalize='none'
           keyboardType='email-address'
         />
