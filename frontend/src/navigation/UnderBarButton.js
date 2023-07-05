@@ -53,21 +53,21 @@ const UnderBarButton = () => {
         options={{
           headerShown: false,
         }}
-      /> */}
+      />
       <Tab.Screen
         name="Chat"
         component={ChatScreen}
         options={{
           headerShown: false,
         }}
-      />
-      {/* <Tab.Screen
-      name="PrivateProfile"
-      component={PrivateProfile}
-      options={{
-        headerShown: false,
-      }}
-    />   */}
+      /> */}
+      <Tab.Screen
+        name="PrivateProfile"
+        component={PrivateProfile}
+        options={{
+          headerShown: false,
+        }}
+      />  
     </Tab.Navigator>
   );
 };
