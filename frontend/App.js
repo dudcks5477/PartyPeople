@@ -13,52 +13,37 @@ const Stack = createNativeStackNavigator();
 
 const App = () => (
   <NavigationContainer>
-    <Stack.Navigator>
-      {/* <Stack.Screen 
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen 
         name="Login" 
-        component={LoginScreen} 
-        options={{
-          headerShown: false,
-        }}
+        component={LoginScreen}
       />
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{
-          headerShown: false,
-        }}
       />
       <Stack.Screen
         name="BottomTab"
         component={UnderBarButton}
-        options={{ 
-          headerShown: false 
-        }}
       />
       <Stack.Screen
         name="Map"
         component={MapScreen}
+        options= {{
+          headerShown: true
+        }}
       />
       <Stack.Screen
-        name="Wishilist"
+        name="Wishlist"
         component={WishlistScreen}
-        options={{
-          headerShown: false
-        }}
       />
       <Stack.Screen
         name="Chat"
         component={ChatScreen}
-        options={{
-          headerShown: false
-        }}
-      /> */}
+      />
       <Stack.Screen
         name="PrivateProfile"
         component={PrivateProfileScreen}
-        options={{
-          headerShown: false
-        }}
       />
     </Stack.Navigator>
   </NavigationContainer>
