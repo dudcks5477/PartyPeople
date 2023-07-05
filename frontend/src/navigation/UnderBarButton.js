@@ -5,35 +5,45 @@ import HomeScreen from '../screens/HomeScreen';
 import MapScreen from '../screens/MapScreen';
 import WishlistScreen from '../screens/WishlistScreen';
 import ChatScreen from '../screens/ChatScreen';
+import PrivateProfileScreen from '../screens/PrivateProfileScreen';
 
 const Tab = createBottomTabNavigator();
+
+const ICONS = {
+  Map: 'map',
+  Wishlist: 'favorite',
+  Home: 'home',
+  Chat: 'chat',
+  PrivateProfile: 'person',
+};
+
+const ACTIVE_COLOR = '#B39DDB';
+const INACTIVE_COLOR = 'white';
+const TAB_BAR_BACKGROUND = 'black';
 
 const UnderBarButton = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, size}) => {
-          const icons = {
-            Map: 'map',
-            wishilist: 'favorite',
-            Home: 'home',
-            Chat: 'chat',
-            PrivateProfile: 'person',
-          };
-          const iconName = icons[route.name];
+          const iconName = ICONS[route.name];
+          if (!iconName) {
+            console.warn(`Icon not found for route: ${route.name}`);
+            return null;
+          }
           return (
             <MaterialIcons
               name={iconName}
-              color={focused ? '#B39DDB' : 'white'}
+              color={focused ? ACTIVE_COLOR : INACTIVE_COLOR}
               size={size}
             />
           );
         },
-        tabBarActiveTintColor: '#B39DDB',
-        tabBarInactiveTintColor: 'white',
-        tabBarStyle: { backgroundColor: 'black' }
+        tabBarActiveTintColor: ACTIVE_COLOR,
+        tabBarInactiveTintColor: INACTIVE_COLOR,
+        tabBarStyle: { backgroundColor: TAB_BAR_BACKGROUND }
       })}>
-      {/* <Tab.Screen 
+      <Tab.Screen 
         name="Map" 
         component={MapScreen}
         options={{
@@ -41,7 +51,7 @@ const UnderBarButton = () => {
         }}
       />
       <Tab.Screen
-        name="Wishilist"
+        name="Wishlist"
         component={WishlistScreen}
         options={{
           headerShown: false,
@@ -60,10 +70,10 @@ const UnderBarButton = () => {
         options={{
           headerShown: false,
         }}
-      /> */}
+      />
       <Tab.Screen
         name="PrivateProfile"
-        component={PrivateProfile}
+        component={PrivateProfileScreen}
         options={{
           headerShown: false,
         }}
