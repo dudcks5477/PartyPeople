@@ -6,6 +6,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import UnderBarButton from './src/navigation/UnderBarButton';
 import MapScreen from './src/screens/MapScreen';
 import WishlistScreen from './src/screens/WishlistScreen';
+import ChatScreen from './src/screens/ChatScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,10 +37,17 @@ const App = () => (
       <Stack.Screen
         name="Map"
         component={MapScreen}
-      /> */}
+      />
       <Stack.Screen
         name="Wishilist"
         component={WishlistScreen}
+        options={{
+          headerShown: false
+        }}
+      /> */}
+      <Stack.Screen
+        name="Chat"
+        component={ChatScreen}
         options={{
           headerShown: false
         }}
