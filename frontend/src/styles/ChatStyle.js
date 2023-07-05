@@ -1,12 +1,32 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
+  chatContainer: {
+    flexDirection: 'row',
+    marginTop: 10,
+    alignItems: 'center',
+  },
+  container: {
+    flex: 1, 
+    backgroundColor: '#000'
+  },
   title: {
     color: '#fff',
     fontSize: 40,
     fontWeight: 'bold',
     marginLeft: 15,
     marginTop: 30,
+  },
+  tabWrapper: {
+    flexDirection: 'row',
+    marginBottom: 13,
+  },
+  tabButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  tabButtonText: {
+    marginRight: 35
   },
   notificationBadge: {
     backgroundColor: 'black',
@@ -25,6 +45,16 @@ export const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 14
   },
+  lineStyleMessage: {
+    width: 60, 
+    marginLeft: '0%', 
+    backgroundColor: 'black'
+  },
+  lineStyleNotification: {
+    width: 75, 
+    marginLeft: '26%', 
+    backgroundColor: 'black'
+  },
   subText: {
     color: '#fff',
     fontSize: 12
@@ -32,5 +62,13 @@ export const styles = StyleSheet.create({
   smallText: {
     color: '#fff',
     fontSize: 10
+  },
+  lineStyle: {
+    marginBottom: 10
+  },
+  flatListStyle: {
+    flex: 1,
+    width: '90%',
+    marginHorizontal: '5%',
   }
 });
