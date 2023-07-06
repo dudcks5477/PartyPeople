@@ -6,6 +6,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import UnderBarButton from './src/navigation/UnderBarButton';
 import MapScreen from './src/screens/MapScreen';
 import AddScreen from './src/screens/AddScreen';
+import MapScreen2 from './src/screens/MapScreen2';
 import WishlistScreen from './src/screens/WishlistScreen';
 import ChatScreen from './src/screens/ChatScreen';
 import PrivateProfileScreen from './src/screens/PrivateProfileScreen';
@@ -37,6 +38,10 @@ const App = () => (
       <Stack.Screen
         name="Add"
         component={AddScreen}
+      />
+      <Stack.Screen
+        name="Map2"
+        component={MapScreen2}
       />
       <Stack.Screen
         name="Wishlist"
