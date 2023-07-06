@@ -5,6 +5,7 @@ import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import UnderBarButton from './src/navigation/UnderBarButton';
 import MapScreen from './src/screens/MapScreen';
+import AddScreen from './src/screens/AddScreen';
 import WishlistScreen from './src/screens/WishlistScreen';
 import ChatScreen from './src/screens/ChatScreen';
 import PrivateProfileScreen from './src/screens/PrivateProfileScreen';
@@ -32,6 +33,10 @@ const App = () => (
         options= {{
           headerShown: true
         }}
+      />
+      <Stack.Screen
+        name="Add"
+        component={AddScreen}
       />
       <Stack.Screen
         name="Wishlist"
