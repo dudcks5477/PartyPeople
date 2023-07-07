@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import {View, Text, Modal, TouchableOpacity, Pressable, Dimensions} from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import PropTypes from 'prop-types';
 import {styles} from '../styles/PrivateProfileStyle';
 import Line from '../components/Line';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import SettingItem from '../components/SettingItem';
 
-const PrivateProfileScreen = () => {
+const PrivateProfileScreen = ({ navigation }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [partyName, setPartyName] = useState('');
@@ -18,7 +20,7 @@ const PrivateProfileScreen = () => {
   };
 
   return (
-    <View styles={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.heading}>프로필</Text>
       <Line style={styles.line} />
       <View style={styles.profileInfo}>
@@ -75,104 +77,38 @@ const PrivateProfileScreen = () => {
       <Line />
       <View style={styles.settingsContainer}>
         <Text style={styles.settingsText}>세팅</Text>
-        <TouchableOpacity 
-          onPress={
-            () => onItemPress('Personal Information')
-          }
-          style={styles.settingsItem}>
-          <View style={styles.itemTextContainer}>
-            <MaterialIcons
-              name="account-circle"
-              size={20}
-              color="#ccc"
-              style={styles.itemIcon} 
-            />
-            <Text style={styles.itemText}>
-              Personal Information
-            </Text>
-          </View>
-          <MaterialIcons
-            name="chevron-right"
-            size={20}
-            color="#ccc"
-            style={styles.itemIcon}
-          />
-        </TouchableOpacity>
+        
+        <SettingItem
+          iconName="account-circle"
+          label="Personal Information"
+          onPress={() => onItemPress('Personal Information')}
+        />
 
-        <TouchableOpacity
-          onPress={
-            () => onItemPress('Login & Security')
-          }
-          style={styles.settingsItem}>
-          <View style={styles.itemTextContainer}>
-            <MaterialIcons
-              name="admin-panel-settings"
-              size={20}
-              color="#ccc"
-              style={styles.itemIcon}
-            />
-            <Text style={styles.itemText}>
-              Login & Security
-            </Text>
-          </View>
-          <MaterialIcons
-            name="chevron-right"
-            size={20}
-            color="#ccc"
-            style={styles.itemIcon}
-          />
-        </TouchableOpacity>
+        <SettingItem
+          iconName="admin-panel-settings"
+          label="Login & Security"
+          onPress={() => onItemPress('Login & Security')}
+        />
 
-        <TouchableOpacity
-          onPress={
-            () => onItemPress('Payments and payouts')
-          }
-          style={styles.settingsItem}>
-          <View style={styles.itemTextContainer}>
-            <MaterialIcons
-              name="payments"
-              size={20}
-              color="#ccc"
-              style={styles.itemIcon}
-            />
-            <Text style={styles.itemText}>
-              Payments and payouts
-            </Text>
-          </View>
-          <MaterialIcons
-            name="chevron-right"
-            size={20}
-            color="#ccc"
-            style={styles.itemIcon}
-          />
-        </TouchableOpacity>
+        <SettingItem
+          iconName="payments"
+          label="Payments and payouts"
+          onPress={() => onItemPress('Payments and payouts')}
+        />
 
-        <TouchableOpacity
-          onPress={
-            () => onItemPress('Taxes')
-          }
-          style={styles.settingsItem}>
-          <View style={styles.itemTextContainer}>
-            <MaterialIcons
-              name="note"
-              size={20}
-              color="#ccc"
-              style={styles.itemIcon}
-            />
-            <Text style={styles.itemText}>
-              Taxes
-            </Text>
-          </View>
-          <MaterialIcons
-            name="chevron-right"
-            size={20}
-            color="#ccc"
-            style={styles.itemIcon}
-          />
-        </TouchableOpacity>
+        <SettingItem
+          iconName="note"
+          label="Taxes"
+          onPress={() => onItemPress('Taxes')}
+        />
+        
       </View>
     </View>
   );
+};
+
+PrivateProfileScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
 };
 
 export default PrivateProfileScreen;
