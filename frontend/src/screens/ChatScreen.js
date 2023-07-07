@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { View, TouchableOpacity, Text, FlatList } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -13,6 +13,15 @@ const ChatScreen = ({ navigation }) => {
   const [messageCount] = useState(0);
   const [notificationCount] = useState(0);
   const [chatRooms, setChatRooms] = useState([]);
+
+  const fetchData = useCallback(async () => {
+    try {
+      const chatRoomsData = await fetchChatRooms();
+      setChatRooms(chatRoomsData);
+    } catch (error) {
+      console.log('Error fetching data', error);
+    }
+  }, []);
 
   useEffect(() => {
     fetchData();
@@ -38,15 +47,6 @@ const ChatScreen = ({ navigation }) => {
     } catch (error) {
       console.error('Error fetching chat rooms:', error);
       return [];
-    }
-  };
-
-  const fetchData = async () => {
-    try {
-      const chatRoomsData = await fetchChatRooms();
-      setChatRooms(chatRoomsData);
-    } catch (error) {
-      console.log('Error fetching data', error);
     }
   };
 
@@ -76,7 +76,6 @@ const ChatScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text>채팅</Text>
       <View style={styles.title}>
         <View style={styles.tabWrapper}>
           <TouchableOpacity onPress={() => setSelectedTab('message')}>
@@ -91,13 +90,12 @@ const ChatScreen = ({ navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setSelectedTab('notification')}>
             <View style={styles.tabButton}>
-              <Text style={styles.text}>
-                {notificationCount > 0 && (
-                  <View style={styles.notificationBadge}>
-                    <Text style={styles.badgeText}>{notificationCount}</Text>
-                  </View>
-                )}
-              </Text>
+              <Text style={styles.text}>notification</Text>
+              {notificationCount > 0 && (
+                <View style={styles.notificationBadge}>
+                  <Text style={styles.badgeText}>{notificationCount}</Text>
+                </View>
+              )}
             </View>
           </TouchableOpacity>
         </View>
