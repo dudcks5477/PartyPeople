@@ -67,3 +67,4 @@ yarn-error.log
 
 # API
 .env
+android/app/src/main/res/values/strings.xml
