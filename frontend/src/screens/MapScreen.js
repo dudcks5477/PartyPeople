@@ -1,6 +1,7 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
+import Config from 'react-native-config';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import axios, { CancelToken, isCancel } from 'axios';
@@ -20,8 +21,8 @@ const MapScreen = () => {
   const isFocused = useIsFocused();
 
   const [region, setRegion] = useState({
-    latitude: 37.5665,
-    longitude: 126.9780,
+    latitude: 37.78825,
+    longitude: -122.4324,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
@@ -93,7 +94,6 @@ const MapScreen = () => {
   return (
     <View style={styles.container}>
       <MapView
-        provider={PROVIDER_GOOGLE}
         style={styles.map}
         ref={mapRef}
         initialRegion={region}
@@ -113,7 +113,7 @@ const MapScreen = () => {
         minLength={2}
         placeholder='Search'
         query={{
-          key: '',
+          key: Config.GOOGLE_MAPS_API_KEY,
           language: 'ko',
           components: 'country: kr',
         }}
@@ -139,7 +139,7 @@ const MapScreen = () => {
   );
 };
 
-MapScreen.propTypes = {
+PartyModal.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   party: PropTypes.object,
   onDetailPress: PropTypes.func,
