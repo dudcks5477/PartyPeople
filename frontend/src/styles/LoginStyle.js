@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#222',
   },
   appName: {
-    color: '#fff',
+    color: '#B39DDB',
     position: 'absolute',
     top: '40%',
     alignSelf: 'center',
