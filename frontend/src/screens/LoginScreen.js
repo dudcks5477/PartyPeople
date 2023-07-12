@@ -1,88 +1,99 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, Keyboard, TextInput, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import NaverLogin, {getProfile as getNaverProfile} from '@react-native-seoul/naver-login';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
+
 import {styles} from '../styles/LoginStyle';
+import naverIcon from '../assets/naverLogo.png';
+import googleIcon from '../assets/googleLogo.png';
 
-export default function LoginScreen() {
-  const [keyboardStatus, setKeyboardStatus] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+GoogleSignin.configure({
+  webClientId: '<My_WEB_CLIENT_ID>',
+  offlineAccess: true,
+});
 
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      'keyboardDidShow',
-      () => {
-        setKeyboardStatus(true);
-      }
-    );
-    const keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
-      () => {
-        setKeyboardStatus(false);
-      }
-    );
+const initials = {
+  kConsumerKey: '<My_naver_app_key>',
+  kConsumerSecret: '<My_naver_app_secret>',
+  kServiceAppName: '<My_service_app_name>',
+  kServiceAppUrlScheme: '<My_service_app_url_scheme>' // only for ios
+};
 
-    return () => {
-      keyboardDidShowListener.remove();
-      keyboardDidHideListener.remove();
-    };
-  }, []);
-
+const LoginScreen = () => {
+  const [isSignInProgress, setIsSignInProgress] = useState(false);
+  const [naverToken, setNaverToken] = useState(null);
   const navigation = useNavigation();
 
-  const handleLogin = async () => {
+  const signInWithGoogle = async () => {
     try {
-      // const response = await axios.post('http://3.35.21.149:8080/users/login', {
-      //   email: email,
-      //   password: password,
-      // });
-
-      // const userId = response.data.id;
-
-      // await AsyncStorage.setItem('useId', JSON.stringify(userId));
-
-      // console.log('a', userId);
-
-      navigation.navigate('BottomTab', {screen: 'Home'});
+      setIsSignInProgress(true);
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signInWithGoogle();
+      console.log(userInfo);
     } catch(error) {
-      console.error(error);
+      console.log(error);
+    } finally {
+      setIsSignInProgress(false);
     }
   };
 
-  const handleRegister = () => {
-    navigation.navigate('Register');
+  const signInWithNaver = async () => {
+    try {
+      setIsSignInProgress(true);
+      const result = await NaverLogin.login(initials);
+      if (result.accessToken) {
+        setNaverToken(result.accessToken);
+        getNaverUserInfo(result.accessToken);
+      } else {
+        console.log(result);
+      }
+    } catch(error) {
+      console.log(error);
+    } finally {
+      setIsSignInProgress(false);
+    }
   };
 
-  
+  const getNaverUserInfo = async (token) => {
+    try {
+      const profileResult = await getNaverProfile(token);
+      console.log(profileResult);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      {!keyboardStatus && 
-        <Text style={styles.loginText}>로그인</Text>
-      }
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder='이메일'
-          value={email}
-          onChangeText={setEmail}
-          autoCapitalize='none'
-          keyboardType='email-address'
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='비밀번호'
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-      </View>
-      
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>로그인</Text>
+      <Text style={styles.appName}>Party UP</Text>
+      <TouchableOpacity
+        style={[styles.signInButton, styles.allButton]}
+        onPress={signInWithGoogle}
+        disabled={isSignInProgress}
+      >
+        <Image source={googleIcon} style={styles.icon} />
+        <Text style={styles.buttonText}>Sign in With Google</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={handleRegister}>
-        <Text style={styles.buttonText}>회원가입</Text>
+      <TouchableOpacity
+        style={[styles.signInButton, styles.allButton]}
+        onPress={signInWithNaver}
+        disabled={isSignInProgress}
+      >
+        <Image source={naverIcon} style={styles.icon} />
+        <Text style={styles.buttonText}>Sign in With Naver</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.signInButton, styles.allButton]}
+        onPress={() => navigation.navigate('Home')}
+      >
+        <Icon name="user-o" size={20} color="#000"/>
+        <Text style={styles.buttonText}>Guest</Text>
       </TouchableOpacity>
     </View>
   );
-}
+
+};
+
+export default LoginScreen;

@@ -3,39 +3,40 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItem: 'center',
+    justifyContent: 'flex-end',
+    padding: 20,
     backgroundColor: '#222',
-    paddingHorizontal: '5%',
   },
-  loginText: {
+  appName: {
     color: '#fff',
     position: 'absolute',
-    top: 92,
+    top: '40%',
     alignSelf: 'center',
-    fontSize: 32,
+    fontSize: 37,
     fontWeight: 'bold',
   },
-  inputContainer: {
-    marginBottom: 60,
+  signInButton: {
     width: '100%',
+    height: 48,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderRadius: 5,
+    marginBottom: 10,
+    flexDirection: 'row',
+    paddingHorizontal: 15,
   },
-  input: {
-    height: 50,
-    borderColor: 'gray',
-    backgroundColor: '#d2d2d2',
-    paddingHorizontal: 10,
-    marginVertical: 10,
-  },
-  button: {
-    width: '100%',
-    backgroundColor: '#000',
-    padding: 12,
-    marginBottom: 10
+  allButton: {
+    backgroundColor: '#d2d2d2'
   },
   buttonText: {
-    color: '#fff',
-    fontSize: 18,
+    color: '#000',
+    fontSize: 16,
+    fontWeight: 'bold',
     textAlign: 'center',
+    flex: 1,
+  },
+  icon: {
+    width: 20,
+    height: 20,
   }
 });
