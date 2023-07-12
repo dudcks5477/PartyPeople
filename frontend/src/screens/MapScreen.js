@@ -129,7 +129,7 @@ const MapScreen = () => {
 
       <TouchableOpacity
         style={styles.addButton}
-        onPress={() => navigation.navigate('AddScreen')}
+        onPress={() => navigation.navigate('Add')}
       >
         <Text style={styles.addButtonText}>
           + Add
