@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 20,
-    width: '90%',
+    marginBottom: -20,
     marginHorizontal: '3%',
   },
   backButtonIcon: {
@@ -77,7 +77,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   button: {
-    marginTop: 10,
+    // marginTop: 10,
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: 1,
