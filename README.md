@@ -1,3 +1,3 @@
 # PartyUP
 
-- Git test
+- 개발자: zerochan, Eden
