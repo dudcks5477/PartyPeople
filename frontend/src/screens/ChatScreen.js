@@ -76,6 +76,15 @@ const ChatScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Text style={{
+        marginLeft: 15, 
+        color: '#fff',
+        marginTop: 20,
+        fontSize: 30,
+        fontWeight: 'bold'
+      }}>
+        메시지함
+      </Text>
       <View style={styles.title}>
         <View style={styles.tabWrapper}>
           <TouchableOpacity onPress={() => setSelectedTab('message')}>

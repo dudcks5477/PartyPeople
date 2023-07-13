@@ -8,14 +8,14 @@ export const styles = StyleSheet.create({
   },
   container: {
     flex: 1, 
-    backgroundColor: '#222'
+    backgroundColor: '#222',
   },
   title: {
     color: '#fff',
     fontSize: 40,
     fontWeight: 'bold',
     marginLeft: 15,
-    marginTop: 30,
+    marginTop: 20,
   },
   tabWrapper: {
     flexDirection: 'row',
