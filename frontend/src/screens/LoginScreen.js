@@ -36,7 +36,7 @@ const LoginScreen = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.signInButton, styles.allButton]}
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('BottomTab', {screen: 'Home'})}
       >
         <Icon name="user-o" size={20} color="#000"/>
         <Text style={styles.buttonText}>Guest</Text>
