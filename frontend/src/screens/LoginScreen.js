@@ -1,18 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 import {styles} from '../styles/LoginStyle';
 import naverIcon from '../assets/naverLogo.png';
 import googleIcon from '../assets/googleLogo.png';
-// import useGoogleSignIn from '../hooks/useGoogleSignIn';
 import { useNaverSignIn } from '../hooks/useNaverSignIn';
+import Config from 'react-native-config';
 
 const LoginScreen = () => { 
   const navigation = useNavigation();
+  const [isGoogleSignInProgress, setGoogleSignInProgress] = useState(false);
 
-  // const {signInWithGoogle, isSignInProgress: isGoogleSignInProgress} = useGoogleSignIn();
+  GoogleSignin.configure({
+    webClientId: Config.GOOGLE_WEB_CLIENT_ID, // From Google API console
+  });
+
+  const signInWithGoogle = async () => {
+    setGoogleSignInProgress(true);
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      console.log(userInfo);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setGoogleSignInProgress(false);
+    }
+  };
+
   const {signInWithNaver, isSignInProgress: isNaverSignInProgress} = useNaverSignIn();
 
   return (
@@ -20,8 +38,8 @@ const LoginScreen = () => {
       <Text style={styles.appName}>Party UP</Text>
       <TouchableOpacity
         style={[styles.signInButton, styles.allButton]}
-        // onPress={signInWithGoogle}
-        // disabled={isGoogleSignInProgress}
+        onPress={signInWithGoogle}
+        disabled={isGoogleSignInProgress}
       >
         <Image source={googleIcon} style={styles.icon} />
         <Text style={styles.buttonText}>Sign in With Google</Text>
