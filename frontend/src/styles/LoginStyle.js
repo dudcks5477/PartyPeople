@@ -1,16 +1,19 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'flex-end',
     padding: 20,
-    backgroundColor: '#222',
+    backgroundColor: 'transparent',
   },
   appName: {
     color: '#B39DDB',
     position: 'absolute',
-    top: '40%',
+    top: '30%',
     alignSelf: 'center',
     fontSize: 37,
     fontWeight: 'bold',
