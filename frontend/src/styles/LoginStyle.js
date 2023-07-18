@@ -29,7 +29,8 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   allButton: {
-    backgroundColor: '#d2d2d2'
+    backgroundColor: '#d2d2d2',
+    opacity: 0.6,
   },
   buttonText: {
     color: '#000',
