@@ -12,9 +12,8 @@ Line.propTypes = {
 
 const styles = StyleSheet.create({
   line: {
-    borderWidth: 0.5,
+    borderBottomWidth: 0.5,
     borderColor: '#D2D2D2',
-    height: 1,
     width: '90%',
     marginHorizontal: '5%',
   }
