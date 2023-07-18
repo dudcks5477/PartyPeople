@@ -4,7 +4,8 @@ export const progressStyles = (progress) => StyleSheet.create({
   container: {
     height: 5,
     width: '90%',
-    marginTop: 5,
+    marginTop: 10,
+    marginBottom: 30
   },
   emptyBar: {
     flexDirection: 'row', 
