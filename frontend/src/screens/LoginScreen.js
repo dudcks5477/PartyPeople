@@ -42,6 +42,7 @@ const LoginScreen = () => {
           style={[styles.signInButton, styles.allButton]}
           onPress={signInWithGoogle}
           disabled={isGoogleSignInProgress}
+          activeOpacity={1.0}
         >
           <Image source={googleIcon} style={styles.icon} />
           <Text style={styles.buttonText}>Sign in With Google</Text>
@@ -50,6 +51,7 @@ const LoginScreen = () => {
           style={[styles.signInButton, styles.allButton]}
           onPress={signInWithNaver}
           disabled={isNaverSignInProgress}
+          activeOpacity={1.0}
         >
           <Image source={naverIcon} style={styles.icon} />
           <Text style={styles.buttonText}>Sign in With Naver</Text>
@@ -57,6 +59,7 @@ const LoginScreen = () => {
         <TouchableOpacity
           style={[styles.signInButton, styles.allButton]}
           onPress={() => navigation.navigate('BottomTab', {screen: 'Home'})}
+          activeOpacity={1.0}
         >
           <Icon name="user-o" size={20} color="#000"/>
           <Text style={styles.buttonText}>Guest</Text>
