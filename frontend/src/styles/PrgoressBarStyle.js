@@ -12,10 +12,12 @@ export const progressStyles = (progress) => StyleSheet.create({
     flexDirection: 'row', 
     height: 5, 
     width: '90%', 
-    backgroundColor:'#d2d2d2'
+    backgroundColor:'#d2d2d2',
+    borderRadius: 10
   },
   fillBar: {
     backgroundColor: '#B39DDB', 
-    width: `${progress}%`
+    width: `${progress}%`,
+    borderRadius: 10
   }
 });
