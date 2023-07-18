@@ -2,16 +2,14 @@ import { StyleSheet } from 'react-native';
 
 export const progressStyles = (progress) => StyleSheet.create({
   container: {
-    flex: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center', 
-    marginTop: 10, 
-    marginBottom: 10
+    height: 5,
+    width: '90%',
+    marginTop: 5,
   },
   emptyBar: {
     flexDirection: 'row', 
-    height: 5, 
-    width: '90%', 
+    height: '100%', 
+    width: '100%', 
     backgroundColor:'#d2d2d2',
     borderRadius: 10
   },
