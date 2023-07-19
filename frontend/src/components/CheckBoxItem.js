@@ -7,7 +7,7 @@ import {styles} from '../styles/AgreementStyle';
 const CheckBoxItem = ({checkValue, setCheckValue, label, important}) => (
   <View style={styles.agreements}>
     <BouncyCheckbox
-      key={label}
+      key={checkValue}
       isChecked={checkValue}
       onPress={(isChecked) => setCheckValue(isChecked)}
       textStyle={{ textDecorationColor: 'none' }}
