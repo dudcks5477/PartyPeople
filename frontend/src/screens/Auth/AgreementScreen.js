@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { useNavigation } from '@react-navigation/native';
 import {styles} from '../../styles/AgreementStyle'; 
 
-
 import ProgressBar from '../../components/ProgressBar';
+import CheckBoxItem from '../../components/CheckBoxItem';
+import Button from '../../components/Button';
 
 const AgreementScreen = () => {
   const [checkAll, setCheckAll] = useState(false);
@@ -41,8 +42,8 @@ const AgreementScreen = () => {
 
       <Text style={styles.subTitle}>원활한 서비스 사용을 위해 약관에 동의해주세요.</Text>
 
-      <View>
-        <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}>
+      <View style={styles.subContainer}>
+        <View style={styles.agreements}>
           <BouncyCheckbox
             key={`all-${checkAll}`}
             isChecked={checkAll}
@@ -51,110 +52,44 @@ const AgreementScreen = () => {
               textDecorationLine: 'none'
             }}
           />
-          <Text style={{fontSize: 15}}>약관 전체 동의</Text>
+          <Text style={styles.textAgreements}>약관 전체 동의</Text>
         </View>
 
-        <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}>
-          <BouncyCheckbox
-            key={`1-${check1}`}
-            isChecked={check1}
-            onPress={(isChecked) => setCheck1(isChecked)}
-            textStyle={{
-              textDecorationLine: 'none'
-            }}
-          />
-          <Text>
-            <Text style={{color:'red', fontSize: 15}}>(필수)</Text>
-            <Text style={{fontSize: 15}}> 서비스 이용 약관</Text>
-          </Text>
-        </View>
+        <CheckBoxItem checkValue={check1} setCheckValue={setCheck1} label=" 서비스 이용 약관" important={true} />
         
-        <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}>
-          <BouncyCheckbox
-            key={`2-${check2}`}
-            isChecked={check2}
-            onPress={(isChecked) => setCheck2(isChecked)}
-            textStyle={{
-              textDecorationLine: 'none'
-            }}
-          />
-          <Text>
-            <Text style={{color:'red', fontSize: 15}}>(필수)</Text>
-            <Text style={{fontSize: 15}}> 개인정보 처리방침</Text>
-          </Text>
-        </View>
+        <CheckBoxItem checkValue={check2} setCheckValue={setCheck2} label=" 개인정보 처리방침" important={true} />
 
-        <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}>
-          <BouncyCheckbox
-            key={`3-${check3}`}
-            isChecked={check3}
-            onPress={(isChecked) => setCheck3(isChecked)}
-            textStyle={{
-              textDecorationLine: 'none'
-            }}
-          />
-          <Text>
-            <Text style={{color:'red', fontSize: 15}}>(필수)</Text>
-            <Text style={{fontSize: 15}}> 위치기반 서비스 이용약관</Text>
-          </Text>
-        </View>
+        <CheckBoxItem checkValue={check3} setCheckValue={setCheck3} label=" 위치기반 서비스 이용약관" important={true} />
 
-        <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}>
-          <BouncyCheckbox
-            key={`4-${check4}`}
-            isChecked={check4}
-            onPress={(isChecked) => setCheck4(isChecked)}
-            textStyle={{
-              textDecorationLine: 'none'
-            }}
-          />
-          <Text>
-            <Text style={{color:'red', fontSize: 15}}>(필수)</Text>
-            <Text style={{fontSize: 15}}> 만 18세 이상입니다</Text>
-          </Text>
-        </View>
+        <CheckBoxItem checkValue={check4} setCheckValue={setCheck4} label=" 만 18세 이상입니다." important={true} />
 
-        <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}>
-          <BouncyCheckbox
-            text=""
-            key={`5-${check5}`}
-            isChecked={check5}
-            onPress={(isChecked) => setCheck5(isChecked)}
-            textStyle={{
-              textDecorationLine: 'none'
-            }}
-          />
-          <Text style={{fontSize: 15}}>(선택) 마케팅 푸시 알림 수신 동의</Text>
-        </View>
+        <CheckBoxItem checkValue={check5} setCheckValue={setCheck5} label="(선택) 마케팅 푸시 알림 수신 동의" important={false}/>
 
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <BouncyCheckbox
-            key={`6-${check6}`}
-            isChecked={check6}
-            onPress={(isChecked) => setCheck6(isChecked)}
-            textStyle={{
-              textDecorationLine: 'none'
-            }}
-          />
-          <Text style={{fontSize: 15}}>(선택) 야간 푸시 알림 수신 동의</Text>
-        </View>
-        <Text style={{fontSize: 9, textAlign: 'center'}}>21시~08시 사이에는 알림을 받지 않습니다.</Text>
+        <CheckBoxItem checkValue={check6} setCheckValue={setCheck6} label="(선택) 야간 푸시 알림 수신 동의" important={false} />
       </View>
 
-      <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-        <TouchableOpacity
-          style={{alignItems: 'center', backgroundColor: '#DDD', padding: 10, marginTop: 10, marginRight: 10}}
+
+      <View style={styles.btnContainer}>
+        <Button 
+          text='나가기'
           onPress={() => navigation.navigate('Login')}
-        >
-          <Text>나가기</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{alignItems: 'center', backgroundColor: '#DDD', padding: 10, marginTop: 10}}
-          onPress={() => navigation.navigate('UserInfoScreen')}
-        >
-          <Text>다음</Text>
-        </TouchableOpacity>
+          style = {styles.outBtn}
+        />
+        <Button
+          text='다음'
+          onPress={() => {
+            if (check1 && check2 && check3 && check4) {
+              navigation.navigate('UserInfo');
+            } else {
+              alert('모든 필수 항목에 동의해주세요.');
+            }
+          }}
+          style={[styles.inBtn, {
+            backgroundColor: check1 && check2 && check3 && check4 ? '#DDD' : '#AAA'
+          }]}
+        />
       </View>
+
     </View>
   );
 };
