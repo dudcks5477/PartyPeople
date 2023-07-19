@@ -34,62 +34,64 @@ const AgreementScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <ProgressBar progress={20}/>
-      
-      <Text style={styles.title}>안녕하세요!</Text>
-      <Text style={styles.title}>Party UP이 처음이신가요?</Text>
+    <View style={styles.background}>
+      <View style={styles.container}>
+        <ProgressBar progress={20}/>
+        
+        <Text style={styles.title}>안녕하세요!</Text>
+        <Text style={styles.title}>Party UP이 처음이신가요?</Text>
 
-      <Text style={styles.subTitle}>원활한 서비스 사용을 위해 약관에 동의해주세요.</Text>
+        <Text style={styles.subTitle}>원활한 서비스 사용을 위해 약관에 동의해주세요.</Text>
 
-      <View style={styles.subContainer}>
-        <View style={styles.agreements}>
-          <BouncyCheckbox
-            key={`all-${checkAll}`}
-            isChecked={checkAll}
-            onPress={handleCheckAll}
-            textStyle={{
-              textDecorationLine: 'none'
-            }}
-          />
-          <Text style={styles.textAgreements}>약관 전체 동의</Text>
+        <View style={styles.subContainer}>
+          <View style={styles.agreements}>
+            <BouncyCheckbox
+              key={`all-${checkAll}`}
+              isChecked={checkAll}
+              onPress={handleCheckAll}
+              textStyle={{
+                textDecorationLine: 'none'
+              }}
+            />
+            <Text style={styles.textAgreements}>약관 전체 동의</Text>
+          </View>
+
+          <CheckBoxItem checkValue={check1} setCheckValue={setCheck1} label=" 서비스 이용 약관" important={true} />
+          
+          <CheckBoxItem checkValue={check2} setCheckValue={setCheck2} label=" 개인정보 처리방침" important={true} />
+
+          <CheckBoxItem checkValue={check3} setCheckValue={setCheck3} label=" 위치기반 서비스 이용약관" important={true} />
+
+          <CheckBoxItem checkValue={check4} setCheckValue={setCheck4} label=" 만 18세 이상입니다." important={true} />
+
+          <CheckBoxItem checkValue={check5} setCheckValue={setCheck5} label="(선택) 마케팅 푸시 알림 수신 동의" important={false}/>
+
+          <CheckBoxItem checkValue={check6} setCheckValue={setCheck6} label="(선택) 야간 푸시 알림 수신 동의" important={false} />
         </View>
 
-        <CheckBoxItem checkValue={check1} setCheckValue={setCheck1} label=" 서비스 이용 약관" important={true} />
-        
-        <CheckBoxItem checkValue={check2} setCheckValue={setCheck2} label=" 개인정보 처리방침" important={true} />
 
-        <CheckBoxItem checkValue={check3} setCheckValue={setCheck3} label=" 위치기반 서비스 이용약관" important={true} />
+        <View style={styles.btnContainer}>
+          <Button 
+            text='나가기'
+            onPress={() => navigation.navigate('Login')}
+            style = {styles.outBtn}
+          />
+          <Button
+            text='다음'
+            onPress={() => {
+              if (check1 && check2 && check3 && check4) {
+                navigation.navigate('UserInfo');
+              } else {
+                alert('모든 필수 항목에 동의해주세요.');
+              }
+            }}
+            style={[styles.inBtn, {
+              backgroundColor: check1 && check2 && check3 && check4 ? '#B39DDB' : '#fff'
+            }]}
+          />
+        </View>
 
-        <CheckBoxItem checkValue={check4} setCheckValue={setCheck4} label=" 만 18세 이상입니다." important={true} />
-
-        <CheckBoxItem checkValue={check5} setCheckValue={setCheck5} label="(선택) 마케팅 푸시 알림 수신 동의" important={false}/>
-
-        <CheckBoxItem checkValue={check6} setCheckValue={setCheck6} label="(선택) 야간 푸시 알림 수신 동의" important={false} />
       </View>
-
-
-      <View style={styles.btnContainer}>
-        <Button 
-          text='나가기'
-          onPress={() => navigation.navigate('Login')}
-          style = {styles.outBtn}
-        />
-        <Button
-          text='다음'
-          onPress={() => {
-            if (check1 && check2 && check3 && check4) {
-              navigation.navigate('UserInfo');
-            } else {
-              alert('모든 필수 항목에 동의해주세요.');
-            }
-          }}
-          style={[styles.inBtn, {
-            backgroundColor: check1 && check2 && check3 && check4 ? '#DDD' : '#AAA'
-          }]}
-        />
-      </View>
-
     </View>
   );
 };
