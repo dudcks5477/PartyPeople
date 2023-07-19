@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import PropTypes from 'prop-types';
 import {styles} from '../styles/AgreementStyle';
 
 const CheckBoxItem = ({checkValue, setCheckValue, label, important}) => (
@@ -17,5 +18,12 @@ const CheckBoxItem = ({checkValue, setCheckValue, label, important}) => (
     </Text>
   </View>
 );
+
+CheckBoxItem.propTypes = {
+  checkValue: PropTypes.bool.isRequired,
+  setCheckValue: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
+  important: PropTypes.bool,
+};
 
 export default CheckBoxItem;
