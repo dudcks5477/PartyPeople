@@ -4,6 +4,7 @@ import React from 'react';
 import LoginScreen from './src/screens/LoginScreen';
 import AgreementScreen from './src/screens/Auth/AgreementScreen';
 import UserInfoScreen from './src/screens/Auth/UserInfoScreen';
+import UserPhotoScreen from './src/screens/Auth/UserPhotoScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import UnderBarButton from './src/navigation/UnderBarButton';
 import MapScreen from './src/screens/MapScreen';
@@ -29,6 +30,10 @@ const App = () => (
       <Stack.Screen
         name="UserInfo"
         component={UserInfoScreen}
+      />
+      <Stack.Screen
+        name="UserPhoto"
+        component={UserPhotoScreen}
       />
       <Stack.Screen
         name="Home"
