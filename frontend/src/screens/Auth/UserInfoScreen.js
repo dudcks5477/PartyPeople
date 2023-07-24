@@ -3,7 +3,8 @@ import {View, Text, TextInput, Modal, TouchableOpacity, FlatList, TouchableWitho
 import { useNavigation } from '@react-navigation/native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import ProgressBar from '../../components/ProgressBar';
-import {styles} from '../../styles/AgreementStyle';
+import {styles as agreementStyles} from '../../styles/AgreementStyle';
+import {styles as userInfoStyles} from '../../styles/UserInfoStyle';
 import Button from '../../components/Button';
 
 const UserInfoScreen = () => {
@@ -43,33 +44,33 @@ const UserInfoScreen = () => {
   };
 
   return (
-    <View style={styles.background}>
-      <View style={styles.container}>
+    <View style={agreementStyles.background}>
+      <View style={agreementStyles.container}>
         <ProgressBar progress={40}/>
 
-        <Text style={styles.title}>기본정보를</Text>
-        <Text style={styles.title}>입력해주세요</Text>
+        <Text style={agreementStyles.title}>기본정보를</Text>
+        <Text style={agreementStyles.title}>입력해주세요</Text>
 
-        <Text style={styles.subTitle}>프로필을 구성하는 가장 기본적인 정보예요.</Text>
+        <Text style={agreementStyles.subTitle}>프로필을 구성하는 가장 기본적인 정보예요.</Text>
 
-        <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap'}}>
-          <Text style={{marginBottom: 10, color: 'white', marginRight: 30}}>이름</Text>
+        <View style={userInfoStyles.info}>
+          <Text style={userInfoStyles.infoName}>이름</Text>
           <TextInput 
             placeholder='이름 (최대 8자)'
             placeholderTextColor="gray"
-            style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10, borderRadius: 5, width: 298,
-              color: name !== '' ? 'white' : 'gray'
-            }}
+            style={[userInfoStyles.infoTextInput, {
+              color: name != '' ? 'white' : 'gray'
+            }]}
             onChangeText={setName}
             value={name}
           />
         </View>
 
         <View>
-          <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap'}}>
-            <Text style={{marginBottom: 10, color: 'white', marginRight: 30}}>성별</Text>
+          <View style={userInfoStyles.info}>
+            <Text style={userInfoStyles.infoName}>성별</Text>
             <TouchableOpacity 
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10, borderRadius: 5, paddingLeft: 3, width: 298, justifyContent: 'center'}}
+              style={userInfoStyles.infoInput}
               activeOpacity={1}
               onPress={() => setModalVisible(true)}
             >
@@ -82,12 +83,12 @@ const UserInfoScreen = () => {
             visible={modalVisible}
           >
             <TouchableOpacity
-              style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)'}}
+              style={userInfoStyles.infoSexSelect1}
               activeOpacity={1}
               onPressOut={() => setModalVisible(false)}
             >
               <TouchableWithoutFeedback>
-                <View style={{ backgroundColor: 'white', padding: 20, borderRadius: 5, width: '80%'}}>
+                <View style={userInfoStyles.infoSexSelect2}>
                   <FlatList
                     data={data}
                     renderItem={({item}) => 
@@ -110,10 +111,10 @@ const UserInfoScreen = () => {
           </Modal>
         </View>
 
-        <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap'}}>
-          <Text style={{marginBottom: 10, color: 'white', marginRight: 30}}>생일</Text>
+        <View style={userInfoStyles.info}>
+          <Text style={userInfoStyles.infoName}>생일</Text>
           <TouchableOpacity
-            style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10, borderRadius: 5, width: 298, paddingLeft: 3, justifyContent: 'center'}}
+            style={userInfoStyles.infoInput}
             onPress={showDatePicker}
           >
             <Text style={{ color: date ? 'white' : 'gray' }}>
@@ -131,13 +132,13 @@ const UserInfoScreen = () => {
         
       </View>
 
-      <View style={[styles.btnContainer, {
+      <View style={[agreementStyles.btnContainer, {
         marginLeft: 30
       }]}>
         <Button 
           text='나가기'
           onPress={() => navigation.navigate('Agreement')}
-          style = {styles.outBtn}
+          style = {agreementStyles.outBtn}
         />
         <Button
           text='다음'
@@ -148,7 +149,7 @@ const UserInfoScreen = () => {
               alert('모든 필수 항목을 입력해주세요.');
             }
           }}
-          style={[styles.inBtn, {
+          style={[agreementStyles.inBtn, {
             backgroundColor: (name && selectedGender !== '선택' && date) ? '#B39DDB' : '#fff'
           }]}
         />
