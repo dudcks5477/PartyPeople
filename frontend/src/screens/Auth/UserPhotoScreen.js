@@ -95,7 +95,7 @@ const UserPhotoScreen = () => {
           text='다음'
           onPress={() => {
             if (selectedImage) {
-              navigation.navigate('Country');
+              navigation.navigate('UserCountry');
             } else {
               alert('사진을 업로드해주세요.');
             }
