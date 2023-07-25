@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {View, Text, Image, TouchableOpacity } from 'react-native';
+import {View, Text, Image, TouchableOpacity, Alert, Linking} from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions';
+import {check, PERMISSIONS, RESULTS, request} from 'react-native-permissions';
 import ProgressBar from '../../components/ProgressBar';
 import Button from '../../components/Button';
 import {styles as agreementStyles} from '../../styles/AgreementStyle';
@@ -11,45 +11,51 @@ import {styles as userPhotoStyles} from '../../styles/UserPhotoStyle';
 
 const UserPhotoScreen = () => {
   const navigation = useNavigation();
-  const [selectedImage, setSelectedImage] = useState(null); 
-
-  const requestPermissions = async () => {
-    const cameraPermission = await check(PERMISSIONS.ANDROID.CAMERA);
-    const storagePermission = await check(PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE);
-    
-    console.log('Before request', cameraPermission, storagePermission);
-    
-    if (cameraPermission !== RESULTS.GRANTED) {
-      const result = await request(PERMISSIONS.ANDROID.CAMERA);
-      if (result !== RESULTS.GRANTED) {
-        alert('이 기능을 사용하려면 카메라 권한이 필요합니다.');
-        return false;
-      }
-    }
+  const [selectedImage, setSelectedImage] = useState(null);   
   
-    if (storagePermission !== RESULTS.GRANTED) {
-      const result = await request(PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE);
-      if (result !== RESULTS.GRANTED) {
-        alert('이 기능을 사용하려면 저장소 권한이 필요합니다.');
-        return false;
-      }
-    }
-    
-    return true;
-  };
   
   const pickImage = async () => {
-    if (await requestPermissions()) {
-      ImagePicker.openPicker({
-        width: 200,
-        height: 300,
-        cropping: true,
-      }).then(image => {
-        setSelectedImage({uri: image.path});
-      }).catch(error => {
-        console.log('ImagePicker error', error);
-      });
+    const cameraPermission = await check(PERMISSIONS.ANDROID.CAMERA);
+    const storagePermission = await check(PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE);
+  
+    if (cameraPermission !== RESULTS.GRANTED) {
+      const cameraRequestResult = await request(PERMISSIONS.ANDROID.CAMERA);
+      if (cameraRequestResult !== RESULTS.GRANTED) {
+        alert('이 기능을 사용하려면 카메라 권한이 필요합니다.');
+        return;
+      }
     }
+
+    if (storagePermission !== RESULTS.GRANTED) {
+      const storageRequestResult = await request(PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE);
+      if (storageRequestResult !== RESULTS.GRANTED) {
+        Alert.alert(
+          '저장소 권한 필요',
+          '이 기능을 사용하려면 설정에서 저장소 권한을 활성화해 주세요.',
+          [
+            {
+              text: '설정으로 이동',
+              onPress: () => Linking.openSettings(),
+            },
+            {
+              text: '취소',
+              onPress: () => console.log('Permission denied by user.'),
+              style: 'cancel',
+            },
+          ],
+        );
+        return;
+      }
+    }
+    ImagePicker.openPicker({
+      width: 200,
+      height: 300,
+      cropping: false,
+    }).then(image => {
+      setSelectedImage({uri: image.path});
+    }).catch(error => {
+      console.log('ImagePicker error', error);
+    });
   };
 
   return(
