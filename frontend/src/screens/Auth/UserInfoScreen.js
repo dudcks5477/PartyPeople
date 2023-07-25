@@ -118,7 +118,7 @@ const UserInfoScreen = () => {
             onPress={showDatePicker}
           >
             <Text style={{ color: date ? 'white' : 'gray' }}>
-              {date ? `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}` : '2023.07.15'}
+              {date ? `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}` : '1998.03.18'}
             </Text>
           </TouchableOpacity>
 
