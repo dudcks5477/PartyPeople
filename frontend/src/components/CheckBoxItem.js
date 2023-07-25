@@ -10,7 +10,6 @@ const CheckBoxItem = ({checkValue, setCheckValue, label, important}) => (
       key={checkValue}
       isChecked={checkValue}
       onPress={(isChecked) => setCheckValue(isChecked)}
-      textStyle={{ textDecorationColor: 'none' }}
     />
     <Text>
       {important && <Text style={styles.importText}>(필수)</Text>}
