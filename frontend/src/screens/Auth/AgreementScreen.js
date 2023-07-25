@@ -49,9 +49,6 @@ const AgreementScreen = () => {
               key={`all-${checkAll}`}
               isChecked={checkAll}
               onPress={handleCheckAll}
-              textStyle={{
-                textDecorationLine: 'none'
-              }}
             />
             <Text style={styles.textAgreements}>약관 전체 동의</Text>
           </View>
