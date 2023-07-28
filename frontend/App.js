@@ -5,7 +5,8 @@ import LoginScreen from './src/screens/LoginScreen';
 import AgreementScreen from './src/screens/Auth/AgreementScreen';
 import UserInfoScreen from './src/screens/Auth/UserInfoScreen';
 import UserPhotoScreen from './src/screens/Auth/UserPhotoScreen';
-import UserCountry from './src/screens/Auth/UserCountry';
+import UserCountryScreen from './src/screens/Auth/UserCountry';
+import UserIntroScreen from './src/screens/Auth/UserIntro';
 import HomeScreen from './src/screens/HomeScreen';
 import UnderBarButton from './src/navigation/UnderBarButton';
 import MapScreen from './src/screens/MapScreen';
@@ -38,7 +39,11 @@ const App = () => (
       />
       <Stack.Screen
         name="UserCountry"
-        component={UserCountry}
+        component={UserCountryScreen}
+      />
+      <Stack.Screen
+        name="UserIntro"
+        component={UserIntroScreen}
       />
       <Stack.Screen
         name="Home"
