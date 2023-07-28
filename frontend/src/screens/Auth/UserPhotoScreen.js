@@ -81,8 +81,8 @@ const UserPhotoScreen = () => {
 
 
         <Text style={agreementStyles.subTitle}>
-          {`사진은 본인 인증을 위해 사용됩니다. 타인의 사진을 게재하면 경고 없이 계정이 
-영구 차단될 수 있으며 형사처벌을 받을 수 있습니다.`}</Text>
+          {`사진은 본인 인증을 위해 사용됩니다. 타인의 사진을 게재하면 경고 없이
+계정이 영구 차단될 수 있으며 형사처벌을 받을 수 있습니다.`}</Text>
       </View>
 
       <View style={[agreementStyles.btnContainer, { marginLeft: 30 }]}>
