@@ -46,12 +46,12 @@ const App = () => (
         component={UserIntroScreen}
       />
       <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-      />
-      <Stack.Screen
         name="BottomTab"
         component={UnderBarButton}
+      />
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
       />
       <Stack.Screen
         name="Map"
