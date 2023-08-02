@@ -16,6 +16,8 @@ const LoginScreen = () => {
 
   GoogleSignin.configure({
     webClientId: Config.GOOGLE_WEB_CLIENT_ID, // From Google API console
+    // offlineAccess need backend
+    // offlineAccess: true,
   });
 
   const signInWithGoogle = async () => {
