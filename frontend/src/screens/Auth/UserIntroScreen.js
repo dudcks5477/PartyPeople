@@ -53,7 +53,7 @@ const UserIntro = () => {
           />
           <Button
             text='완료'
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('BottomTab')}
             style={[agreementStyles.inBtn, {
               backgroundColor: '#B39DDB'
             }]}
