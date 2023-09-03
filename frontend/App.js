@@ -1,62 +1,62 @@
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import React from 'react';
-// import LoginScreen from './src/screens/LoginScreen.js';
-// import HomeScreen from './src/screens/HomeScreen.js';
-// import UnderBarButton from './src/container/UnderBarButton.js';
-// const Stack = createNativeStackNavigator();
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
+import LoginScreen from './src/screens/LoginScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import UnderBarButton from './src/navigation/UnderBarButton';
+import MapScreen from './src/screens/MapScreen';
+import AddScreen from './src/screens/AddScreen';
+import MapScreen2 from './src/screens/MapScreen2';
+import WishlistScreen from './src/screens/WishlistScreen';
+import ChatScreen from './src/screens/ChatScreen';
+import PrivateProfileScreen from './src/screens/PrivateProfileScreen';
 
-// const App = () => (
-//   <NavigationContainer>
-//     <Stack.Navigator>
-//       <Stack.Screen
-//         name="Login"
-//         component={LoginScreen}
-//         options={{
-//           headerShown: false,
-//         }}
-//       />
-//       <Stack.Screen
-//         name="Home"
-//         component={HomeScreen}
-//         options={{
-//           headerShown: false,
-//         }}
-//       />
-//       <Stack.Screen
-//         name="BottomTab"
-//         component={UnderBarButton}
-//         options={{headerShown: false}}
-//       />
-//     </Stack.Navigator>
-//   </NavigationContainer>
-// );
+const Stack = createNativeStackNavigator();
 
-// export default App;  
+const App = () => (
+  <NavigationContainer>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen 
+        name="Login" 
+        component={LoginScreen}
+      />
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+      />
+      <Stack.Screen
+        name="BottomTab"
+        component={UnderBarButton}
+      />
+      <Stack.Screen
+        name="Map"
+        component={MapScreen}
+        options= {{
+          headerShown: true
+        }}
+      />
+      <Stack.Screen
+        name="Add"
+        component={AddScreen}
+      />
+      <Stack.Screen
+        name="Map2"
+        component={MapScreen2}
+      />
+      <Stack.Screen
+        name="Wishlist"
+        component={WishlistScreen}
+      />
+      <Stack.Screen
+        name="Chat"
+        component={ChatScreen}
+      />
+      <Stack.Screen
+        name="PrivateProfile"
+        component={PrivateProfileScreen}
+      />
+    </Stack.Navigator>
+  </NavigationContainer>
+);
 
-import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
-import axios from 'axios';
-const App = () => {
-  const [backendData, setBackendData] = useState("");
-
-
-  useEffect(() => {
-    axios.get('http://localhost:3000/pet')
-  .then(response => {
-    setBackendData(response.data); // 서버 응답 데이터 출력
-  })
-  .catch(error => {
-    console.log(error);
-  });
-  }, []);
-
-  return (
-    <View>
-      <Text>{backendData}</Text>
-    </View>
-  );
-};
-
-export default App;
-
+export default App;  

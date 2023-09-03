@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, View, SafeAreaView, TouchableOpacity} from 'react-native';
+import { ScrollView, View, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // AsyncStorage import 추가
-import SearchBar from '../container/SearchBar';
-import Line from '../container/Line';
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
+import SearchBar from '../components/SearchBar';
+import Line from '../components/Line';
 import Card from '../components/Card';
+import {styles} from '../styles/HomeStyle';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -73,18 +74,5 @@ const HomeScreen = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#222',
-  },
-  containerParty: {
-    marginVertical: 10,
-  },
-  cardButton: {
-    marginBottom: 10,
-  },
-});
 
 export default HomeScreen;

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">frontend</string>
+    <string name="GOOGLE_MAPS_API_KEY">API_APP_KEY</string>
+</resources>

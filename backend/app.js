@@ -1,15 +1,27 @@
 const express = require('express');
-const morgan = re
+const session = require('express-session');
 const app = express();
+const passport = require('./middlewares/passport');
+const authRouter = require('./routes/auth');
+const initializeDB = require('./config/db');
 
-app.set('port',process.env.PORT || 3000); //app.get('port')로 3000뽑아 올 수있다.
+initializeDB();
 
-app.get('/',(req,res)=>{
-    res.send('hello express');
+app.use(session({
+  secret: 'secret', // 실제 사용시에는 복잡한 문자열을 사용
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/', authRouter);
+
+app.get('/', (req, res) => {
+  res.send('Hello World');
 });
 
-app.listen(app.get('port'),()=>{
-    console.log("익스프레스 서버 실행")
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
 });
-
-mongoose.
