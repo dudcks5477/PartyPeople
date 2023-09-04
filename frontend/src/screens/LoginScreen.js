@@ -1,72 +1,31 @@
-import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, Image, ImageBackground} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import React from 'react-native';
+import {View, Text, ImageBackground, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
-import {styles} from '../styles/LoginStyle';
-import naverIcon from '../assets/naverLogo.png';
-import googleIcon from '../assets/googleLogo.png';
-import { useNaverSignIn } from '../hooks/useNaverSignIn';
-import Config from 'react-native-config';
+import LoginPartyImage from '../assets/LoginParty.jpg';
+import {styles} from '../styles/LoginStyle'; 
 
-const LoginScreen = () => { 
+const LoginScreen = () => {
   const navigation = useNavigation();
-  const [isGoogleSignInProgress, setGoogleSignInProgress] = useState(false);
 
-  GoogleSignin.configure({
-    webClientId: Config.GOOGLE_WEB_CLIENT_ID, // From Google API console
-    // offlineAccess need backend
-    // offlineAccess: true,
-  });
-
-  const signInWithGoogle = async () => {
-    setGoogleSignInProgress(true);
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      console.log(userInfo);
-      navigation.navigate('Agreement');
-    } catch(error) {
-      console.log('Error:', error);
-    } finally {
-      setGoogleSignInProgress(false);
-    }
-  };
-
-  const {signInWithNaver, isSignInProgress: isNaverSignInProgress} = useNaverSignIn();
-
-  return (
-    <ImageBackground source={require('../assets/LoginParty.jpg')} style={styles.backgroundImage}>
-      <View style={styles.container}>
-        <Text style={styles.appName}>Party UP</Text>
-        <TouchableOpacity
-          style={[styles.signInButton, styles.allButton]}
-          onPress={signInWithGoogle}
-          disabled={isGoogleSignInProgress}
-          activeOpacity={1.0}
-        >
-          <Image source={googleIcon} style={styles.icon} />
-          <Text style={styles.buttonText}>Sign in With Google</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.signInButton, styles.allButton]}
-          onPress={signInWithNaver}
-          disabled={isNaverSignInProgress}
-          activeOpacity={1.0}
-        >
-          <Image source={naverIcon} style={styles.icon} />
-          <Text style={styles.buttonText}>Sign in With Naver</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.signInButton, styles.allButton]}
-          onPress={() => navigation.navigate('BottomTab', {screen: 'Home'})}
-          activeOpacity={1.0}
-        >
-          <Icon name="user-o" size={20} color="#000"/>
-          <Text style={styles.buttonText}>Guest</Text>
-        </TouchableOpacity>
+  return(
+    <ImageBackground source={LoginPartyImage} style={styles.background}>
+      <View style={styles.textContainer}>
+        <Text style={styles.headerText}>Party UP</Text>
+        <Text style={styles.subHeaderText}>우리 집에서 만나는 새로운 문화</Text>
       </View>
+      <TouchableOpacity style={styles.signUpButton} onPress={() => {
+        console.log('가입하기 버튼 클릭됨');
+        navigation.navigate('Agreement');
+      }}>
+        <Text style={styles.signUpButtonText}>가입하기</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.loginButton} onPress={() => {
+        console.log('로그인 버튼 클릭됨');
+        navigation.navigate('Agreement');
+      }}>
+        <Text style={styles.loginButtonText}>로그인</Text>
+      </TouchableOpacity>
     </ImageBackground>
   );
 };
