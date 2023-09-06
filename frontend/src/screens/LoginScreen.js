@@ -16,13 +16,13 @@ const LoginScreen = () => {
       </View>
       <TouchableOpacity style={styles.signUpButton} onPress={() => {
         console.log('가입하기 버튼 클릭됨');
-        navigation.navigate('Agreement');
+        navigation.navigate('SignNumber');
       }}>
         <Text style={styles.signUpButtonText}>가입하기</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.loginButton} onPress={() => {
         console.log('로그인 버튼 클릭됨');
-        navigation.navigate('Agreement');
+        navigation.navigate('SignNumber');
       }}>
         <Text style={styles.loginButtonText}>로그인</Text>
       </TouchableOpacity>

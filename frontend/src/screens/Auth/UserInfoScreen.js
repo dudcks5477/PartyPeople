@@ -3,7 +3,7 @@ import {View, Text, TextInput, Modal, TouchableOpacity, FlatList, TouchableWitho
 import { useNavigation } from '@react-navigation/native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import ProgressBar from '../../components/ProgressBar';
-import {styles as agreementStyles} from '../../styles/AgreementStyle';
+import {styles as agreementStyles} from '../../styles/SignNumberStyle';
 import {styles as userInfoStyles} from '../../styles/UserInfoStyle';
 import Button from '../../components/Button';
 

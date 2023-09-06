@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {check, PERMISSIONS, RESULTS, request} from 'react-native-permissions';
 import ProgressBar from '../../components/ProgressBar';
 import Button from '../../components/Button';
-import {styles as agreementStyles} from '../../styles/AgreementStyle';
+import {styles as agreementStyles} from '../../styles/SignNumberStyle';
 import {styles as userPhotoStyles} from '../../styles/UserPhotoStyle';
 
 const UserPhotoScreen = () => {

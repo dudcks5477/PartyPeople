@@ -4,7 +4,7 @@ import {View, Text, TextInput, ScrollView} from 'react-native';
 import ProgressBar from '../../components/ProgressBar';
 import Button from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
-import {styles as agreementStyles} from '../../styles/AgreementStyle';
+import {styles as agreementStyles} from '../../styles/SignNumberStyle';
 import {styles as userIntroStyles} from '../../styles/UserIntroStyle';
 
 const UserIntro = () => {

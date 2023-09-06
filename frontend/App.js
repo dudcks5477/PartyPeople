@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import LoginScreen from './src/screens/LoginScreen';
-import AgreementScreen from './src/screens/Auth/AgreementScreen';
+import SignNumberScreen from './src/screens/Auth/SignNumberScreen';
 import UserInfoScreen from './src/screens/Auth/UserInfoScreen';
 import UserPhotoScreen from './src/screens/Auth/UserPhotoScreen';
 import UserCountryScreen from './src/screens/Auth/UserCountryScreen';
@@ -26,8 +26,8 @@ const App = () => (
         component={LoginScreen}
       />
       <Stack.Screen
-        name="Agreement"
-        component={AgreementScreen}
+        name="SignNumber"
+        component={SignNumberScreen}
       />
       <Stack.Screen
         name="UserInfo"

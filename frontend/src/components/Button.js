@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import PropTypes from 'prop-types';
-import {styles} from '../styles/AgreementStyle';
+import {styles} from '../styles/SignNumberStyle';
 
 const Button = ({ text, onPress, style }) => {
   return (

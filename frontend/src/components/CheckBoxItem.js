@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import PropTypes from 'prop-types';
-import {styles} from '../styles/AgreementStyle';
+import {styles} from '../styles/SignNumberStyle';
 
 const CheckBoxItem = ({checkValue, setCheckValue, label, important}) => (
   <View style={styles.agreements}>

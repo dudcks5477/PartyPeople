@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import countries from '../../data/countries.json';
 import ProgressBar from '../../components/ProgressBar';
 import Button from '../../components/Button';
-import {styles as agreementStyles} from '../../styles/AgreementStyle';
+import {styles as agreementStyles} from '../../styles/SignNumberStyle';
 import {styles as userCountryStyles} from '../../styles/UserCountryStyle';
 
 const UserCountry = () => {
