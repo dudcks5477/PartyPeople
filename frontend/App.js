@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import LoginScreen from './src/screens/LoginScreen';
 import SignNumberScreen from './src/screens/Auth/SignNumberScreen';
+import NumberCertiScreen from './src/screens/Auth/NumberCertiScreen';
 import UserInfoScreen from './src/screens/Auth/UserInfoScreen';
 import UserPhotoScreen from './src/screens/Auth/UserPhotoScreen';
 import UserCountryScreen from './src/screens/Auth/UserCountryScreen';
@@ -28,6 +29,10 @@ const App = () => (
       <Stack.Screen
         name="SignNumber"
         component={SignNumberScreen}
+      />
+      <Stack.Screen
+        name="Certification"
+        component={NumberCertiScreen}
       />
       <Stack.Screen
         name="UserInfo"

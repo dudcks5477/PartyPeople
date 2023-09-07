@@ -10,22 +10,22 @@ const AgreementScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>가입을 진행해 보세요!</Text>
+      <Text style={styles.headerText}>인증 번호를 입력해 주세요</Text>
       <View style={styles.centeredContent}>
         <TextInput
           style={styles.input}
-          placeholder="전화번호"
+          placeholder="● ● ● ● ● ●"
           keyboardType="phone-pad"
           value={phoneNumber}
           onChangeText={setPhoneNumber}
           placeholderTextColor="rgba(0, 0, 0, 0.17)"
         />
-        <Text style={styles.text}>전화번호 입력은 당사 서비스 약관 및 개인정보 보호정책에 동의하는 것입니다. 감사합니다.</Text>
+        <Text style={styles.text}>받지 못하셨나요? 그럼 여길 눌러보세요!</Text>
       </View>
 
       <TouchableOpacity style={styles.NextButton} onPress={() => {
         console.log('가입하기 버튼 클릭됨');
-        navigation.navigate('Certification');
+        navigation.navigate('UserInfo');
       }}>
         <Text style={styles.NextButtonText}>다음</Text>
       </TouchableOpacity>
