@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import {styles} from '../../styles/SignNumberStyle';
 
 
-const AgreementScreen = () => {
+const NumberCertiScreen = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const navigation = useNavigation();
 
@@ -25,7 +25,7 @@ const AgreementScreen = () => {
 
       <TouchableOpacity style={styles.NextButton} onPress={() => {
         console.log('가입하기 버튼 클릭됨');
-        navigation.navigate('UserInfo');
+        navigation.navigate('Name');
       }}>
         <Text style={styles.NextButtonText}>다음</Text>
       </TouchableOpacity>
@@ -33,4 +33,4 @@ const AgreementScreen = () => {
   );
 };
 
-export default AgreementScreen;
+export default NumberCertiScreen;
