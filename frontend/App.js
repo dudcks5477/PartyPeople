@@ -4,7 +4,7 @@ import React from 'react';
 import LoginScreen from './src/screens/LoginScreen';
 import SignNumberScreen from './src/screens/Auth/SignNumberScreen';
 import NumberCertiScreen from './src/screens/Auth/NumberCertiScreen';
-import UserInfoScreen from './src/screens/Auth/UserInfoScreen';
+import NameScreen from './src/screens/Auth/NameScreen';
 import UserPhotoScreen from './src/screens/Auth/UserPhotoScreen';
 import UserCountryScreen from './src/screens/Auth/UserCountryScreen';
 import UserIntroScreen from './src/screens/Auth/UserIntroScreen';
@@ -35,8 +35,8 @@ const App = () => (
         component={NumberCertiScreen}
       />
       <Stack.Screen
-        name="UserInfo"
-        component={UserInfoScreen}
+        name="Name"
+        component={NameScreen}
       />
       <Stack.Screen
         name="UserPhoto"
