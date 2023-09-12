@@ -5,6 +5,7 @@ import LoginScreen from './src/screens/LoginScreen';
 import SignNumberScreen from './src/screens/Auth/SignNumberScreen';
 import NumberCertiScreen from './src/screens/Auth/NumberCertiScreen';
 import NameScreen from './src/screens/Auth/NameScreen';
+import NickNameScreen from './src/screens/Auth/NickNameScreen';
 import UserPhotoScreen from './src/screens/Auth/UserPhotoScreen';
 import UserCountryScreen from './src/screens/Auth/UserCountryScreen';
 import UserIntroScreen from './src/screens/Auth/UserIntroScreen';
@@ -37,6 +38,10 @@ const App = () => (
       <Stack.Screen
         name="Name"
         component={NameScreen}
+      />
+      <Stack.Screen
+        name="NickName"
+        component={NickNameScreen}
       />
       <Stack.Screen
         name="UserPhoto"
