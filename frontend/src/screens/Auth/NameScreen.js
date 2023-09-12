@@ -31,8 +31,8 @@ const NameScreen = () => {
       <Text style={styles.text}>PartyUP에서는 닉네임을 사용하지만, 인증을 위해 입력해주세요!</Text>
 
       <TouchableOpacity style={styles.NextButton} onPress={() => {
-        console.log('가입하기 버튼 클릭됨');
-        navigation.navigate('UserInfo');
+        console.log('다음 버튼 클릭됨');
+        navigation.navigate('NickName');
       }}>
         <Text style={styles.NextButtonText}>다음</Text>
       </TouchableOpacity>
