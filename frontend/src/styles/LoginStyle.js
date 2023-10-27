@@ -1,42 +1,48 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  container: {
+  background: {
     flex: 1,
-    justifyContent: 'flex-end',
-    padding: 20,
-    backgroundColor: '#222',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  appName: {
-    color: '#B39DDB',
+  textContainer: {
     position: 'absolute',
-    top: '40%',
-    alignSelf: 'center',
-    fontSize: 37,
-    fontWeight: 'bold',
+    top: 177,
+    alignItems: 'center'
   },
-  signInButton: {
-    width: '100%',
-    height: 48,
-    justifyContent: 'space-between',
+  headerText: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    color: '#fff'
+  },
+  subHeaderText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#fff'
+  },
+  signUpButton: {
+    position: 'absolute',
+    top: 600,
+    width: 206,
+    height: 49,
+    backgroundColor: 'rgba(210, 210, 210, 0.5)',
+    borderRadius: 40,
+    justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5,
-    marginBottom: 10,
-    flexDirection: 'row',
-    paddingHorizontal: 15,
   },
-  allButton: {
-    backgroundColor: '#d2d2d2'
-  },
-  buttonText: {
-    color: '#000',
-    fontSize: 16,
+  signUpButtonText: {
+    color: 'white',
     fontWeight: 'bold',
-    textAlign: 'center',
-    flex: 1,
+    fontSize: 20
   },
-  icon: {
-    width: 20,
-    height: 20,
+  loginButton: {
+    position: 'absolute',
+    top: 660,
+  },
+  loginButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16
   }
 });

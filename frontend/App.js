@@ -2,6 +2,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import LoginScreen from './src/screens/LoginScreen';
+import SignNumberScreen from './src/screens/Auth/SignNumberScreen';
+import NumberCertiScreen from './src/screens/Auth/NumberCertiScreen';
+import NameScreen from './src/screens/Auth/NameScreen';
+import NickNameScreen from './src/screens/Auth/NickNameScreen';
+import UserPhotoScreen from './src/screens/Auth/UserPhotoScreen';
+import UserCountryScreen from './src/screens/Auth/UserCountryScreen';
+import UserIntroScreen from './src/screens/Auth/UserIntroScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import UnderBarButton from './src/navigation/UnderBarButton';
 import MapScreen from './src/screens/MapScreen';
@@ -21,12 +28,40 @@ const App = () => (
         component={LoginScreen}
       />
       <Stack.Screen
-        name="Home"
-        component={HomeScreen}
+        name="SignNumber"
+        component={SignNumberScreen}
+      />
+      <Stack.Screen
+        name="Certification"
+        component={NumberCertiScreen}
+      />
+      <Stack.Screen
+        name="Name"
+        component={NameScreen}
+      />
+      <Stack.Screen
+        name="NickName"
+        component={NickNameScreen}
+      />
+      <Stack.Screen
+        name="UserPhoto"
+        component={UserPhotoScreen}
+      />
+      <Stack.Screen
+        name="UserCountry"
+        component={UserCountryScreen}
+      />
+      <Stack.Screen
+        name="UserIntro"
+        component={UserIntroScreen}
       />
       <Stack.Screen
         name="BottomTab"
         component={UnderBarButton}
+      />
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
       />
       <Stack.Screen
         name="Map"

@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import Geocoder from 'react-native-geocoding';
 import { styles } from '../styles/MapStyle2';
 import Map from '../components/Map';
-import PlaceAutocomplete from '../components/PlaceAutocomplete';
+import PlaceAutocomplete from '../components/PlaceAutoComplete';
 
 Geocoder.init('API_KEY');
 
